@@ -1,0 +1,8 @@
+.record {
+    margin: 1rem;
+}
+
+.record > a {
+    font-weight: bold;
+    margin-left: 4px;
+}

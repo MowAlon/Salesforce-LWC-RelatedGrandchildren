@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Related List - Grandchildren</masterLabel>
+    <apiVersion>57.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="title"                   label="Title"                            type="String"  required="false" default="Title" description="Title to appear at the top of the component" />
+            <property name="iconName"                label="Icon Name (optional)"             type="String"  required="false"                 description="Exact string to use for icon-name attribute, like 'utility:knowledge_base' (see https://lightningdesignsystem.com/icons)" />
+            <property name="objectName"              label="Object API Name"                  type="String"  required="true"                  description="API Name of the object you want to display, like 'Account' or 'Some_Custom_Object__c'." />
+            <property name="grandChildToChildLookup" label="Grandchild to Child Lookup Field" type="String"  required="false"                 description="This and the next field are required together OR 'Alternate Relationship'. API Name of the Lookup field linking the grandchild object to the child between itself and this object." />
+            <property name="childToParentLookup"     label="Child to Parent Lookup Field"     type="String"  required="false"                 description="This and the above field are required together OR 'Alternate Relationship'. API Name of the Lookup field linking the middle child object to this object." />
+            <property name="objectRelationToRecord"  label="OPTIONAL Alternate Relationship"  type="String"  required="false"                 description="Replaces above two fields. Allows a shallower or deeper relationship than just two levels (grandchildren). Use SOQL notation. For example, to display the Contacts related to a Manager's Employees' Accounts, put this component on a Manager's User page and make this field 'Account.Owner.Manager'. In the rare instance when you'd want a direct relationship, just put the one relationship field, like 'User__c' to show custom object records relating to a User." />
+            <property name="fieldsCSV"               label="Fields (case-sensitive)"          type="String"  required="true"                  description="Comma-separated list of case-sensitive API Names for the fields you want to make available (displayed in the order provided)." />
+            <property name="nameReplacement"         label="Name Replacement"                 type="String"  required="false"                 description="An alternative to the standard Name field - used as the first line of each record and links to that record's detail page. For related fields, use SOQL notation, like 'Customer_Premise_Equipment__r.Name'." />
+            <property name="filter"                  label="SOQL Filters"                     type="String"  required="false"                 description="The WHERE clause of a SOQL query (don't include 'WHERE')" />
+            <property name="extraSOQL"               label="Extra SOQL Commands"              type="String"  required="false"                 description="Any extra SOQL string to include after the WHERE clause, like ORDER BY and/or LIMIT" />
+            <property name="compact"                 label="Compact Density"                  type="Boolean"                  default="false" description="Normally, Salesforce will decide how to display the data. Checking this box forces it to use the 'compact' layout which puts each field's label and value on the same line." />
+            <property name="editable"                label="Editable"                         type="Boolean"                  default="false" description="If checked, fields other than the name are editable in-line." />
+            <property name="enableNew"               label="Show New Action"                  type="Boolean"                  default="false" description="If checked, a New button will be available for creating new records for the displayed object." />
+            <property name="newDefaultFieldsString"  label="New Default Fields String"        type="String"  required="false"                 description="A very specialized use case when the New action is enabled. Provide the exact URL-encoded string needed for setting the default values, like 'User__c=THIS-RECORD-ID,CustomCheckbox__c=true,Name=Salesforce%2C%20%231%3DCRM'. Only literal default values are allowed with the one exception of 'THIS-RECORD-ID' which is interpreted as the Id of the current record (this is really only useful for direct relationships... not grandchildren or deeper)." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,32 @@
+<template>
+    <lightning-card icon-name={iconName}>
+        <h1 slot="title">{title}</h1>
+        <div slot="actions">
+            <lightning-button label="New" slot="actions" onclick={navigateToNewObjectPage}></lightning-button>
+        </div>
+
+        <template if:true={initialWrappers}>
+            <template for:each={initialWrappers} for:item="wrapper">
+                <div key={wrapper.record.Id} class="record">
+                    <a data-id={wrapper.record.Id} onclick={navigateToRecordViewPage}>{wrapper.displayName}</a>
+                    <lightning-record-form key={wrapper.record.Id} record-id={wrapper.record.Id} object-api-name={objectName} fields={fields} mode={mode} density={density}></lightning-record-form>
+                </div>
+            </template>
+        </template>
+
+        <template if:true={showAll}>
+            <template for:each={restOfWrappers} for:item="wrapper">
+                <div key={wrapper.record.Id} class="record">
+                    <a data-id={wrapper.record.Id} onclick={navigateToRecordViewPage}>{wrapper.displayName}</a>
+                    <lightning-record-form key={wrapper.record.Id} record-id={wrapper.record.Id} object-api-name={objectName} fields={fields} mode={mode} density={density}></lightning-record-form>
+                </div>
+            </template>
+        </template>
+
+        <div slot="footer">
+            <!-- <template if:true={showViewAll}> -->
+                <a onclick={viewAll}>View All</a>
+            <!-- </template> -->
+        </div>
+    </lightning-card>
+</template>
