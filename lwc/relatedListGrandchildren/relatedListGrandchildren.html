@@ -1,9 +1,9 @@
 <template>
     <lightning-card icon-name={iconName}>
         <h1 slot="title">{title}</h1>
-        <div slot="actions">
+        <template if:true={enableNew} slot="actions">
             <lightning-button label="New" slot="actions" onclick={navigateToNewObjectPage}></lightning-button>
-        </div>
+        </template>
 
         <template if:true={initialWrappers}>
             <template for:each={initialWrappers} for:item="wrapper">
