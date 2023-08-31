@@ -16,9 +16,9 @@ export default class RelatedListGrandchildren extends NavigationMixin(LightningE
     @api nameReplacement;
     @api filter;
     @api extraSOQL;
-    @api compact;
-    @api editable;
-    @api enableNew;
+    @api compact   = false;
+    @api editable  = false;
+    @api enableNew = false;
     @api newDefaultFieldsString;
 
     initialRecordDisplayCount = 3;
