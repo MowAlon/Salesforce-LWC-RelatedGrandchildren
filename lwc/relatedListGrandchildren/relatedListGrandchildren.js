@@ -77,7 +77,7 @@ export default class RelatedListGrandchildren extends NavigationMixin(LightningE
                 actionName: 'new'
             },
             state: {
-                defaultFieldValues: this.newDefaultFieldsString.replaceAll('THIS-RECORD-ID', this.recordId),
+                defaultFieldValues: this.newDefaultFieldsString?.replaceAll('THIS-RECORD-ID', this.recordId),
                 nooverride: '1'
             }
         });
